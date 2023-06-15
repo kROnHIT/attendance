@@ -8,16 +8,12 @@ import {
   View,
   Button,
   NativeModules,
-  Alert
+  Alert,
 } from 'react-native';
 
-import {
-  Colors,
-  Header,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 
-function App(): JSX.Element {
-
+function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -27,11 +23,9 @@ function App(): JSX.Element {
   const PressMe = () => {
     const sdk = NativeModules.RNairsnap;
     sdk.sayHello('rohit', (err, message) => {
-
       console.log('sssssdasdsa', err, message);
-    })
-  }
-
+    });
+  };
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -47,10 +41,7 @@ function App(): JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Button
-            title="Press mess"
-          onPress={PressMe}
-          />
+          <Button title="Press mess" onPress={PressMe} />
         </View>
       </ScrollView>
     </SafeAreaView>

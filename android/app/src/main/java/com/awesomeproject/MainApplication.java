@@ -1,6 +1,8 @@
 package com.awesomeproject;
 
 import android.app.Application;
+import android.util.Log;
+
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
@@ -9,6 +11,9 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
+
+import ai.tech5.pheonix.capture.controller.FaceCaptureController;
+import ai.tech5.pheonix.capture.controller.FaceCaptureListener;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -53,10 +58,14 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+      FaceCaptureController controller = FaceCaptureController.getInstance();
+      Log.d("FaceCaptureController", "Logging" + controller.toString());
+//      controller.startFaceCapture("", MainApplication.this, this);
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       DefaultNewArchitectureEntryPoint.load();
     }
     ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
+
 }
