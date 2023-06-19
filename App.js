@@ -20,6 +20,12 @@ function App() {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const callback1 = (err, message) => {
+    console.log('sssssdasdsa', err, message);
+  };
+  const callback2 = () => {
+    console.log('dcdcsc');
+  };
   const PressMe = () => {
     const sdk = NativeModules.RNairsnap;
     sdk.sayHello('rohit', (err, message) => {
